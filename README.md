@@ -1,6 +1,6 @@
-# TopHand landing page
+# TopHand website
 
-Marketing site for [TopHand](https://farmboard.app) — your digital AI farmhand.
+The website used to promote tophand.ag — TopHand, your digital AI farmhand.
 Built from the Claude Design handoff (`TopHand landing and logos-handoff.zip`).
 
 ## Stack
@@ -25,6 +25,12 @@ account). Env vars — see `.env.example`:
   for real app screenshots when ready.
 - The story-section farm photo is a styled placeholder — drop in a real GoatLife
   Farm photo.
+
+## Compliance docs
+
+`farmboard_privacy_policy.html` and `farmboard_sms_opt_in.png` at the repo root
+predate the site and are referenced externally (Twilio verification) — leave
+them where they are.
 
 ## Dev
 
