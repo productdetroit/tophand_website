@@ -1,10 +1,14 @@
-/* Pendo event helper. The Pendo agent isn't installed yet (needs an API key —
-   provisioning tracked in Jira); track() is a safe no-op until window.pendo
-   exists, so event call sites are correct from day one. */
+/* Pendo event helper. The agent is installed by components/SiteAnalytics.tsx
+   (KAN-137, production builds only); track() stays a safe no-op whenever
+   window.pendo is absent (dev, or the CDN blocked), so event call sites are
+   always safe to hit. */
 
 declare global {
   interface Window {
-    pendo?: { track: (event: string, payload?: Record<string, unknown>) => void };
+    pendo?: {
+      initialize: (options?: object) => void;
+      track: (event: string, payload?: Record<string, unknown>) => void;
+    };
   }
 }
 

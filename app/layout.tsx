@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Besley, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import SiteAnalytics from "@/components/SiteAnalytics";
 
 const besley = Besley({
   subsets: ["latin"],
@@ -44,7 +45,10 @@ export default function RootLayout({
       lang="en"
       className={`${besley.variable} ${publicSans.variable} ${plexMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <SiteAnalytics />
+      </body>
     </html>
   );
 }
