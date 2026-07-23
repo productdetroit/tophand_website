@@ -246,14 +246,102 @@ a:focus-visible {
   box-shadow: 0 1px 2px rgba(31, 61, 43, 0.05);
 }
 
+/* ---------- pricing page ---------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.th-pricing-hero {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 60px 24px 42px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.th-core-bullets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 26px;
+  margin-top: 24px;
+}
+
+.th-switch {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  flex: none;
+  transition: background 0.2s;
+  /* 44px touch target via generous hit area */
+  outline-offset: 4px;
+}
+.th-switch::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+}
+.th-switch-knob {
+  position: absolute;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.th-summary-wrap {
+  position: sticky;
+  bottom: 16px;
+  z-index: 40;
+  margin-top: 26px;
+}
+.th-summary {
+  background: var(--green);
+  border-radius: 16px;
+  padding: 18px 22px;
+  box-shadow: 0 16px 40px -14px rgba(31, 61, 43, 0.7);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.th-form-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 860px) {
   .th-hero,
   .th-2col,
   .th-story,
-  .th-cta {
+  .th-cta,
+  .th-pricing-hero {
     grid-template-columns: 1fr !important;
+  }
+  .th-pricing-hero {
+    gap: 28px;
   }
   .th-nav-links {
     display: none;
@@ -266,5 +354,19 @@ a:focus-visible {
   }
   .th-beat-shot {
     grid-column: 1 / -1;
+  }
+  .th-core-bullets {
+    grid-template-columns: 1fr;
+  }
+  /* sticky (not fixed): pinned to the viewport bottom while the plan
+     builder is in view, scrolls away after — never covers the trial form */
+  .th-summary-wrap {
+    bottom: 12px;
+  }
+  .th-summary {
+    padding: 14px 16px;
+  }
+  .th-summary a {
+    flex: 1 1 100%;
   }
 }
