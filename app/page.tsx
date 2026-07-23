@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import BrandMark from "@/components/BrandMark";
 import HeroPhone from "@/components/HeroPhone";
 import TrialForm from "@/components/TrialForm";
 import { platTexture } from "@/components/texture";
@@ -230,9 +231,7 @@ export default function Home() {
       <header className="th-header">
         <div className="th-header-inner">
           <a href="#top" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <span className="th-seal" style={{ width: 32, height: 32, fontSize: 19 }}>
-              T
-            </span>
+            <BrandMark size={40} bg="light" />
             <span style={{ ...serif, fontWeight: 700, fontSize: 21, color: "var(--green)", letterSpacing: "-.01em" }}>
               TopHand
             </span>
@@ -422,13 +421,11 @@ export default function Home() {
           >
             {/* placeholder until a real GoatLife Farm photo is dropped in */}
             <div className="th-texture" style={{ backgroundImage: platTexture, opacity: 0.12, backgroundSize: "300px 300px" }} />
-            <span className="th-seal" style={{ width: 64, height: 64, fontSize: 38, borderRadius: 14 }}>
-              T
-            </span>
+            <BrandMark size={96} bg="dark" />
             <p style={{ ...mono, margin: 0, fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(247,244,236,.85)", textAlign: "center" }}>
               GoatLife Farm
               <br />
-              Detroit, Michigan
+              Lapeer, Michigan
             </p>
           </div>
           <div>
@@ -439,7 +436,7 @@ export default function Home() {
               Born in the barn, not the boardroom.
             </h2>
             <p style={{ fontSize: 17.5, lineHeight: 1.62, color: "var(--body)", margin: "0 0 26px", textWrap: "pretty" }}>
-              TopHand runs the daily work of a real dairy-goat operation — GoatLife Farm in Detroit,
+              TopHand runs the daily work of a real dairy-goat operation — GoatLife Farm in Lapeer,
               Michigan, the founder&rsquo;s own. Every feature earned its place by surviving an actual
               season. If it didn&rsquo;t hold up at 5 a.m. in the milking parlor, it didn&rsquo;t ship.
             </p>
@@ -563,15 +560,13 @@ export default function Home() {
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 14, paddingTop: 26 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
-              <span className="th-seal" style={{ width: 28, height: 28, fontSize: 16, borderRadius: 7 }}>
-                T
-              </span>
+              <BrandMark size={34} bg="dark" />
               <span style={{ ...serif, fontWeight: 700, fontSize: 16, color: "var(--paper)" }}>TopHand</span>
             </div>
             <p style={{ ...mono, margin: 0, fontSize: 11.5, lineHeight: 1.6, color: "rgba(247,244,236,.6)", textAlign: "right" }}>
               Made by Product Detroit LLC
               <br />
-              Built at GoatLife Farm · Detroit, Michigan
+              Built at GoatLife Farm · Lapeer, Michigan
             </p>
           </div>
         </div>

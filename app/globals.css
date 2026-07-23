@@ -117,19 +117,6 @@ a:focus-visible {
   justify-content: space-between;
   gap: 20px;
 }
-.th-seal {
-  border-radius: 8px;
-  background: var(--gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--green);
-  font-family: var(--serif);
-  font-weight: 800;
-  line-height: 1;
-  box-shadow: inset 0 0 0 2px rgba(31, 61, 43, 0.18);
-  flex: none;
-}
 .th-nav-links {
   display: flex;
   align-items: center;
