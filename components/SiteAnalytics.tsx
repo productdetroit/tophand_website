@@ -19,9 +19,11 @@ import { useEffect } from "react";
 
 const PENDO_API_KEY =
   process.env.NEXT_PUBLIC_PENDO_API_KEY ?? "0f8a2d1e-15fa-47cc-b7c7-ee367af22e15";
-// GA4 measurement ID (public, ships in the tag on every install). Baked
-// default keeps deploys GitHub-only; the env var wins when set.
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-2752XCBWEG";
+// GA4 measurement ID for the tophand.ag property (public, ships in the tag
+// on every install) — separate from the app's property, which carries its
+// own tag on app.tophand.ag. Baked default keeps deploys GitHub-only; the
+// env var wins when set.
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-B6RE0J3C84";
 
 /* Pendo's install snippet, verbatim: stubs the API so calls queue until the
    agent script arrives, then loads it from their CDN. */
