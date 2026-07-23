@@ -358,27 +358,15 @@ a:focus-visible {
   .th-core-bullets {
     grid-template-columns: 1fr;
   }
+  /* sticky (not fixed): pinned to the viewport bottom while the plan
+     builder is in view, scrolls away after — never covers the trial form */
   .th-summary-wrap {
-    /* pin to the viewport bottom on mobile per the handoff */
-    position: fixed;
-    left: 12px;
-    right: 12px;
     bottom: 12px;
-    margin-top: 0;
   }
   .th-summary {
     padding: 14px 16px;
   }
   .th-summary a {
     flex: 1 1 100%;
-  }
-  /* keep the fixed bar from covering the engine cards' tail */
-  .th-summary-spacer {
-    height: 140px;
-  }
-}
-@media (min-width: 861px) {
-  .th-summary-spacer {
-    display: none;
   }
 }

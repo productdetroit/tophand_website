@@ -521,7 +521,6 @@ export default function PricingView() {
               </a>
             </div>
           </div>
-          <div className="th-summary-spacer" aria-hidden="true" />
         </div>
       </section>
 
