@@ -19,7 +19,9 @@ import { useEffect } from "react";
 
 const PENDO_API_KEY =
   process.env.NEXT_PUBLIC_PENDO_API_KEY ?? "0f8a2d1e-15fa-47cc-b7c7-ee367af22e15";
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+// GA4 measurement ID (public, ships in the tag on every install). Baked
+// default keeps deploys GitHub-only; the env var wins when set.
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-2752XCBWEG";
 
 /* Pendo's install snippet, verbatim: stubs the API so calls queue until the
    agent script arrives, then loads it from their CDN. */
