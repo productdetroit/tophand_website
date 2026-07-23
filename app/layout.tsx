@@ -23,7 +23,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tophand.vercel.app"),
+  metadataBase: new URL("https://tophand.ag"),
   title: "TopHand — Your digital AI farmhand",
   description:
     "TopHand is your digital farm hand — powered by AI, grounded in your experience. It pairs your knowledge with best practices and a timely nudge when conditions line up, so nothing slips and no window is missed.",

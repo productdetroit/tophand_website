@@ -17,7 +17,13 @@ account). Env vars — see `.env.example`:
 
 - `RESEND_API_KEY` — send-only key is fine
 - `TRIAL_REQUEST_TO` — defaults to joe@productdetroit.com
-- `NEXT_PUBLIC_LOGIN_URL` — defaults to https://farmboard.app
+
+## Login redirect
+
+All "Log in" links point to `/login`, which redirects to the app's hostname
+(`APP_URL`, default `https://farmboard.app`). Once `app.tophand.ag` is attached
+to the farmboard Vercel project, set `APP_URL=https://app.tophand.ag` here and
+redeploy — tophand.ag/login becomes the branded login URL.
 
 ## Placeholders to replace
 

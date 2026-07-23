@@ -4,7 +4,7 @@ import HeroPhone from "@/components/HeroPhone";
 import TrialForm from "@/components/TrialForm";
 import { platTexture } from "@/components/texture";
 
-const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL ?? "https://farmboard.app";
+const LOGIN_URL = "/login";
 
 const serif: CSSProperties = { fontFamily: "var(--serif)" };
 const mono: CSSProperties = { fontFamily: "var(--mono)" };
