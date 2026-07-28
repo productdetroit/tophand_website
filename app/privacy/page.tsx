@@ -163,7 +163,7 @@ export default function PrivacyPage() {
       <p>
         <strong>Product Detroit LLC</strong>
         <br />
-        <a href="mailto:support@productdetroit.com">support@productdetroit.com</a>
+        <a href="mailto:support@tophand.ag">support@tophand.ag</a>
       </p>
     </LegalShell>
   );

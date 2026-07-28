@@ -59,7 +59,7 @@ export default function MessagingTermsPage() {
       <h2>Help and support</h2>
       <p>
         Reply <span className="kbd">HELP</span> to any TopHand message for assistance, or contact
-        us at <a href="mailto:support@productdetroit.com">support@productdetroit.com</a>.
+        us at <a href="mailto:support@tophand.ag">support@tophand.ag</a>.
       </p>
 
       <h2>Carrier disclaimer</h2>
@@ -86,7 +86,7 @@ export default function MessagingTermsPage() {
       <p>
         We may update these Messaging Terms from time to time; the &ldquo;last updated&rdquo; date
         above reflects the current version. Questions about the Program can be sent to Product
-        Detroit LLC at <a href="mailto:support@productdetroit.com">support@productdetroit.com</a>.
+        Detroit LLC at <a href="mailto:support@tophand.ag">support@tophand.ag</a>.
       </p>
     </LegalShell>
   );
