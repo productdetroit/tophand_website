@@ -52,10 +52,10 @@ export default function SiteFooter() {
             <a href={LOGIN_URL} style={{ color: "var(--paper)", fontSize: 15, fontWeight: 600 }}>
               Log in
             </a>
-            <a href="https://productdetroit.com/privacy" style={{ color: "rgba(247,244,236,.72)", fontSize: 15 }}>
+            <a href="/privacy" style={{ color: "rgba(247,244,236,.72)", fontSize: 15 }}>
               Privacy
             </a>
-            <a href="https://productdetroit.com/messaging-terms" style={{ color: "rgba(247,244,236,.72)", fontSize: 15 }}>
+            <a href="/messaging-terms" style={{ color: "rgba(247,244,236,.72)", fontSize: 15 }}>
               Messaging terms
             </a>
             <a href="https://productdetroit.com/contact" style={{ color: "rgba(247,244,236,.72)", fontSize: 15 }}>
