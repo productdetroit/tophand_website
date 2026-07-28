@@ -370,3 +370,86 @@ a:focus-visible {
     flex: 1 1 100%;
   }
 }
+
+/* ---- Legal pages (/privacy, /messaging-terms) ---- */
+.legal-doc h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: -0.01em;
+  color: var(--green);
+  margin: 34px 0 10px;
+}
+.legal-doc p,
+.legal-doc li {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.legal-doc p {
+  margin: 0 0 14px;
+}
+.legal-doc ul {
+  margin: 0 0 14px 20px;
+  padding: 0;
+}
+.legal-doc li {
+  margin-bottom: 7px;
+}
+.legal-doc a {
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.legal-doc .legal-callout {
+  background: rgba(224, 168, 46, 0.08);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  padding: 20px 22px;
+  margin: 16px 0 8px;
+}
+.legal-doc .legal-callout h2 {
+  margin-top: 0;
+}
+.legal-doc .table-wrap {
+  overflow-x: auto;
+  margin: 6px 0 18px;
+}
+.legal-doc table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  border: 1px solid var(--line);
+}
+.legal-doc thead th {
+  background: var(--green);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 12.5px;
+  text-align: left;
+  padding: 10px 14px;
+}
+.legal-doc tbody td {
+  padding: 11px 14px;
+  border-top: 1px solid var(--line);
+  vertical-align: top;
+}
+.legal-doc tbody td:first-child {
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.legal-doc .kbd {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 13px;
+  background: rgba(31, 61, 43, 0.08);
+  color: var(--green);
+  padding: 1px 7px;
+  border-radius: 5px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
