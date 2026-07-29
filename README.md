@@ -1,3 +1,5 @@
+**(c) 2026 Joe Ross / Product Detroit LLC. All rights reserved.** This repository is public for reference - no license is granted to copy, modify, or redistribute the code or content.
+
 # TopHand website
 
 The website used to promote tophand.ag — TopHand, your digital AI farmhand.
