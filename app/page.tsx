@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
-import BrandMark from "@/components/BrandMark";
+import Image from "next/image";
+import goatlifeLogo from "@/public/goatlife-farm.png";
 import HeroPhone from "@/components/HeroPhone";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
@@ -390,23 +391,21 @@ export default function Home() {
               overflow: "hidden",
               border: "1px solid var(--line)",
               boxShadow: "0 24px 50px -26px rgba(31,61,43,.55)",
-              background: "linear-gradient(160deg, #2a5039 0%, var(--green) 60%, #16301f 100%)",
+              background: "#fff",
               display: "flex",
-              flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              gap: 18,
+              padding: "9%",
               position: "relative",
             }}
           >
-            {/* placeholder until a real GoatLife Farm photo is dropped in */}
-            <div className="th-texture" style={{ backgroundImage: platTexture, opacity: 0.12, backgroundSize: "300px 300px" }} />
-            <BrandMark size={96} bg="dark" />
-            <p style={{ ...mono, margin: 0, fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(247,244,236,.85)", textAlign: "center" }}>
-              GoatLife Farm
-              <br />
-              Lapeer, Michigan
-            </p>
+            <Image
+              src={goatlifeLogo}
+              alt="Goat Life Farm — Oxford, Michigan, est. 2016"
+              style={{ width: "100%", height: "auto" }}
+              sizes="(max-width: 860px) 90vw, 480px"
+              placeholder="empty"
+            />
           </div>
           <div>
             <p className="eyebrow" style={{ marginBottom: 16 }}>
