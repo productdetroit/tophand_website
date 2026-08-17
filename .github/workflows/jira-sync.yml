@@ -1,0 +1,61 @@
+# Mechanism 3 (KAN-212) — ticket status derived from git, not from memory.
+#
+# Push to main     -> tickets owning a commit in the range move to Done.
+# Push to a branch -> the same tickets move to In Progress.
+#
+# This is the marketing site, the second repo TopHand ships from. Its workflow is
+# Idea -> To Do -> In Progress -> Testing -> Done, with no
+# In Review state, so a branch push lands on In Progress. Movement is forward
+# only, so a push can never pull a ticket back out of Testing or Done.
+#
+# Only commit SUBJECTS are read — see .github/scripts/jira-lib.mjs.
+name: Jira sync
+
+on:
+  push:
+    branches: ['**']
+
+concurrency:
+  group: jira-sync-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Transition tickets from the pushed range
+    runs-on: ubuntu-latest
+    # Never block a merge on Jira being reachable.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Collect commit subjects in the pushed range
+        id: subjects
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          set -u
+          if [ -z "${BEFORE:-}" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ] \
+             || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            RANGE_ARGS="-1 $AFTER"
+          else
+            RANGE_ARGS="$BEFORE..$AFTER"
+          fi
+          {
+            echo 'value<<COMMIT_SUBJECTS_EOF'
+            git log --format=%s $RANGE_ARGS || true
+            echo 'COMMIT_SUBJECTS_EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Sync
+        env:
+          TICKET_PREFIXES: KAN
+          STATUS_LADDER: Idea,To Do,In Progress,Testing,Done
+          TARGET_STATUS: ${{ github.ref == 'refs/heads/main' && 'Done' || 'In Progress' }}
+          JIRA_BASE_URL: https://productdetroit.atlassian.net
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          COMMIT_SUBJECTS: ${{ steps.subjects.outputs.value }}
+        run: node .github/scripts/sync-status.mjs
