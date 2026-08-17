@@ -1,0 +1,40 @@
+# Mechanism 2 (KAN-212) — a PR must resolve to a real ticket.
+# Make this a required check in branch protection for it to actually gate.
+name: Ticket check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  ticket:
+    name: PR references a resolvable ticket
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Collect commit subjects on this PR
+        id: subjects
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          {
+            echo 'value<<COMMIT_SUBJECTS_EOF'
+            git log --format=%s "$BASE_SHA..$HEAD_SHA" || true
+            echo 'COMMIT_SUBJECTS_EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Check
+        env:
+          TICKET_PREFIXES: KAN
+          JIRA_BASE_URL: https://productdetroit.atlassian.net
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+          COMMIT_SUBJECTS: ${{ steps.subjects.outputs.value }}
+        run: node .github/scripts/check-ticket.mjs
