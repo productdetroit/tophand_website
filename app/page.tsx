@@ -1,7 +1,11 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import goatlifeLogo from "@/public/goatlife-farm.png";
+import farmShot from "@/public/screens/farm.png";
+import gatesShot from "@/public/screens/field-detail.png";
+import tasksShot from "@/public/screens/tasks.png";
 import HeroPhone from "@/components/HeroPhone";
+import PhoneShot from "@/components/PhoneShot";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import TrialForm from "@/components/TrialForm";
@@ -12,155 +16,6 @@ const LOGIN_URL = "/login";
 const serif: CSSProperties = { fontFamily: "var(--serif)" };
 const mono: CSSProperties = { fontFamily: "var(--mono)" };
 
-/* ---------- placeholder product shots (swap for real screenshots later) ---------- */
-
-function ShotChip({ label, done = true }: { label: string; done?: boolean }) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 8,
-        background: "#fff",
-        border: "1px solid rgba(31,61,43,.1)",
-        borderRadius: 9,
-        padding: "7px 10px",
-      }}
-    >
-      <span
-        style={{
-          width: 16,
-          height: 16,
-          borderRadius: "50%",
-          background: done ? "var(--green)" : "rgba(31,61,43,.14)",
-          color: "var(--gold)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: 10,
-          flex: "none",
-        }}
-      >
-        {done ? "✓" : ""}
-      </span>
-      <span style={{ ...mono, fontSize: 11.5, color: "var(--ink)" }}>{label}</span>
-    </div>
-  );
-}
-
-function ShotConditions() {
-  return (
-    <div className="shot" aria-label="Product UI — per-field conditions view">
-      <div className="shot-card" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-        <span style={{ fontWeight: 700, fontSize: 13, color: "var(--green)" }}>North hayfield</span>
-        <span style={{ ...mono, fontSize: 10.5, color: "var(--muted)" }}>12.4 ac · 2nd cutting</span>
-      </div>
-      <p style={{ ...mono, margin: "4px 0 0", fontSize: 9, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--muted-2)" }}>
-        Conditions
-      </p>
-      <ShotChip label="maturity — boot stage" />
-      <ShotChip label="weather — 3 dry days ahead" />
-      <ShotChip label="moisture — drying by Thu" done={false} />
-    </div>
-  );
-}
-
-function ShotConfirm() {
-  return (
-    <div className="shot" style={{ justifyContent: "center" }} aria-label="Product UI — confirm a suggested window">
-      <div
-        style={{
-          background: "var(--green)",
-          borderRadius: 12,
-          padding: "14px 15px",
-          color: "var(--paper)",
-          boxShadow: "0 8px 20px -8px rgba(31,61,43,.6)",
-        }}
-      >
-        <p style={{ ...mono, margin: "0 0 3px", fontSize: 9, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--sky)" }}>
-          Window open
-        </p>
-        <p style={{ ...serif, margin: 0, fontWeight: 600, fontSize: 18, color: "#fff" }}>Cut window: Thu–Sat</p>
-        <p style={{ margin: "5px 0 0", fontSize: 10.5, color: "rgba(247,244,236,.8)" }}>
-          3 dry days · moisture in range by Thu morning
-        </p>
-      </div>
-      <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
-        <span
-          style={{
-            flex: 1,
-            textAlign: "center",
-            background: "var(--gold)",
-            color: "var(--green)",
-            fontWeight: 700,
-            fontSize: 12.5,
-            padding: "9px 0",
-            borderRadius: 9,
-          }}
-        >
-          Confirm cut
-        </span>
-        <span
-          style={{
-            flex: 1,
-            textAlign: "center",
-            background: "#fff",
-            border: "1px solid rgba(31,61,43,.2)",
-            color: "var(--green)",
-            fontWeight: 600,
-            fontSize: 12.5,
-            padding: "9px 0",
-            borderRadius: 9,
-          }}
-        >
-          Adjust
-        </span>
-      </div>
-    </div>
-  );
-}
-
-function ShotTask({ initials, color, title, meta }: { initials: string; color: string; title: string; meta: string }) {
-  return (
-    <div className="shot-card" style={{ display: "flex", alignItems: "center", gap: 9, padding: "8px 10px" }}>
-      <span
-        style={{
-          width: 22,
-          height: 22,
-          borderRadius: "50%",
-          background: color,
-          color: "#fff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: 9.5,
-          fontWeight: 700,
-          flex: "none",
-        }}
-      >
-        {initials}
-      </span>
-      <div>
-        <p style={{ margin: 0, fontSize: 11.5, fontWeight: 600, color: "var(--green)" }}>{title}</p>
-        <p style={{ ...mono, margin: "1px 0 0", fontSize: 9, color: "var(--muted)" }}>{meta}</p>
-      </div>
-    </div>
-  );
-}
-
-function ShotBoard() {
-  return (
-    <div className="shot" aria-label="Product UI — shared crew task board">
-      <p style={{ ...mono, margin: 0, fontSize: 9, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--muted-2)" }}>
-        Crew board · Thursday
-      </p>
-      <ShotTask initials="RJ" color="var(--sky)" title="Cut North hayfield" meta="assigned · due Thu" />
-      <ShotTask initials="MK" color="var(--rust)" title="Rake after dew lifts" meta="assigned · Fri 10a" />
-      <ShotTask initials="RJ" color="var(--sky)" title="Bale + wrap by dusk" meta="queued · Sat" />
-    </div>
-  );
-}
-
 /* ---------- content data (copy from the handoff design) ---------- */
 
 const beats = [
@@ -168,19 +23,34 @@ const beats = [
     num: "01",
     title: "It watches the conditions.",
     body: "Live weather, crop maturity, and moisture reconciled per field. When a window opens, you see it — with the reasoning, not a black box.",
-    shot: <ShotConditions />,
+    shot: (
+      <PhoneShot
+        src={gatesShot}
+        alt="A field's detail screen: the cut recommendation and the three gates — maturity at target, dry window open, moisture pending"
+      />
+    ),
   },
   {
     num: "02",
     title: "You make the call.",
     body: "TopHand suggests; you confirm. Advisory, never automatic — the decision on your farm is always yours.",
-    shot: <ShotConfirm />,
+    shot: (
+      <PhoneShot
+        src={farmShot}
+        alt="The Farm screen: fields ranked most urgent first, each with its suggested cut day — Cut Fri, ideal window"
+      />
+    ),
   },
   {
     num: "03",
     title: "The crew gets moving.",
-    body: "One confirm spawns assigned tasks on a board the whole team shares — phone-first, works in the barn, texts the people who don’t do email.",
-    shot: <ShotBoard />,
+    body: "One confirm spawns assigned tasks on a task list the whole team shares — phone-first, works in the barn, texts the people who don’t do email.",
+    shot: (
+      <PhoneShot
+        src={tasksShot}
+        alt="The Tasks screen: the shared crew task list with priorities, due dates, and who's on each job"
+      />
+    ),
   },
 ];
 
@@ -317,16 +187,7 @@ export default function Home() {
                   {beat.body}
                 </p>
               </div>
-              <div
-                className="th-beat-shot"
-                style={{
-                  aspectRatio: "16/11",
-                  borderRadius: 14,
-                  overflow: "hidden",
-                  border: "1px solid var(--line)",
-                  boxShadow: "0 12px 28px -18px rgba(31,61,43,.5)",
-                }}
-              >
+              <div className="th-beat-shot" style={{ display: "flex", justifyContent: "center" }}>
                 {beat.shot}
               </div>
             </div>
